@@ -1,5 +1,3 @@
-package Stack;
-
 public class UsingLL {
     static class Node {
         int data;

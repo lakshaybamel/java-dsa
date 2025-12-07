@@ -1,5 +1,3 @@
-package Queue;
-
 public class UsingArray {
     static class Queue{
         static int arr[];

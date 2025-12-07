@@ -1,5 +1,3 @@
-package Queue;
-
 public class UsingLL {
     
     // Node structure

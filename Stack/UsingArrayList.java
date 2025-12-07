@@ -1,5 +1,3 @@
-package Stack;
-
 import java.util.ArrayList;
 
 public class UsingArrayList {
