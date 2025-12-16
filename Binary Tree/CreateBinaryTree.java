@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class CreateBinaryTree {
     
     static class Node {
@@ -52,6 +54,44 @@ public class CreateBinaryTree {
         System.out.print(root.data+" ");
     }
 
+    public static void levelOrder(Node root) {
+        if (root == null) {
+            return; // empty tree
+        }
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null); // level separator
+
+        while (!q.isEmpty()) {
+            Node currNode = q.remove();
+
+            if (currNode == null) {
+                System.out.println(); // move to next line for new level
+
+                if (q.isEmpty()) {
+                    break; // traversal finished
+                } else {
+                    q.add(null); // add separator for next level
+                }
+
+            } else {
+                System.out.print(currNode.data + " ");
+
+                // add left child
+                if (currNode.left != null) {
+                    q.add(currNode.left);
+                }
+
+                // add right child
+                if (currNode.right != null) {
+                    q.add(currNode.right);
+                }
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         int[] nodes = {
             1, 2, 4, -1, -1, 5, -1, -1,
@@ -65,5 +105,8 @@ public class CreateBinaryTree {
         tree.inOrder(root);
         System.out.println();
         tree.postOrder(root);
+        System.out.println();
+
+        tree.levelOrder(root);
     }
 }
