@@ -13,6 +13,8 @@ public class LowestCommonAncestor {
         }
     }
 
+    // APPROACH 1: Using Paths
+
     // Find path from root to given node
     public static boolean getPath(Node root, int n, ArrayList<Node> path) {
         if (root == null) {
@@ -60,6 +62,29 @@ public class LowestCommonAncestor {
         return path1.get(i - 1);
     }
 
+    // APPROACH 2: Optimized Recursive
+    public static Node lca2(Node root, int n1, int n2) {
+        // base case
+        if (root == null || root.data == n1 || root.data == n2) {
+            return root;
+        }
+
+        // find LCA in left and right subtree
+        Node leftLca = lca2(root.left, n1, n2);
+        Node rightLca = lca2(root.right, n1, n2);
+
+        // if one side is null, return the other
+        if (rightLca == null) {
+            return leftLca;
+        }
+        if (leftLca == null) {
+            return rightLca;
+        }
+
+        // both sides returned non-null → current node is LCA
+        return root;
+    }
+
     public static void main(String[] args) {
 
         /*
@@ -80,9 +105,9 @@ public class LowestCommonAncestor {
         root.right.left = new Node(6);
         root.right.right = new Node(7);
 
-        int n1 = 4, n2 = 5;
+        int n1 = 4, n2 = 7;
 
-        Node ans = lca(root, n1, n2);
+        Node ans = lca2(root, n1, n2);
         System.out.println("LCA: " + ans.data);
     }
 }
