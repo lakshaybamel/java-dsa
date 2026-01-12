@@ -34,6 +34,11 @@ public class HeapOperations {
         public void printHeap() {
             System.out.println(arr);
         }
+
+        // Print Peek
+        public void peek() {
+            System.out.println("Peek: " + arr.get(0));
+        }
     }
 
     public static void main(String[] args) {
@@ -45,5 +50,6 @@ public class HeapOperations {
         h.add(1);
 
         h.printHeap(); // Min Heap
+        h.peek(); // Print Peek
     }
 }
